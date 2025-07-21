@@ -231,7 +231,9 @@
 .gallery > img {
   --_p: calc(-1*var(--g));
   grid-area: 1/1;
-  width: 350px; 
+  max-width: 400px;
+  width: 100%;
+  height: auto; 
   aspect-ratio: 1;
   cursor: pointer;
   transition: .4s .1s;
