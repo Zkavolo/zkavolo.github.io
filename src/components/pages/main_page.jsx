@@ -9,6 +9,8 @@ import {
   Download,
   Linkedin,
   Twitter,
+  CopyrightIcon,
+  Phone,
 } from "lucide-react";
 import experiences from "../data/experince";
 import skills from "../data/skills";
@@ -70,7 +72,9 @@ export default function Main_Page() {
       >
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none"></div>
 
-        <div className="absolute left-0 right-0 top-[-10%] h-[1000px] w-[1000px] rounded-full bg-[radial-gradient(circle_400px_at_50%_300px,#fbfbfb36,#000)] pointer-events-none"></div>
+        <div className="absolute left-0 right-0 top-[-10%] h-[1000px] w-[1000px] rounded-full bg-[radial-gradient(circle_400px_at_30%_300px,#fbfbfb36,#000)] pointer-events-none"></div>
+        <div className="absolute left-0 right-[20%] bottom-[-10%] h-[1000px] w-[1000px] rounded-full bg-[radial-gradient(circle_400px_at_70%_700px,#fbfbfb36,#000)] pointer-events-none"></div>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 relative ">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-300 mb-4">
@@ -82,7 +86,11 @@ export default function Main_Page() {
             {experiences.map((exp, index) => (
               <Card
                 key={index}
-                className="p-6 hover:shadow-lg transition-shadow bg-gradient-to-br from-gray-900 via-gray-800 to-black"
+                className="p-6 bg-gradient-to-br from-gray-900 via-gray-800 to-black
+                     hover:shadow-2xl hover:shadow-white/20 
+                     hover:scale-105 hover:border-white hover:border-2
+                     transition-all duration-300 ease-out
+                     border border-gray-700"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
                   <div className="lg:col-span-1">
@@ -129,32 +137,58 @@ export default function Main_Page() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section
+        id="skills"
+        className="relative py-20 bg-gradient-to-br from-gray-900 to-black overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none"></div>
+        <div
+          className="absolute left-0 right-0 top-[-10%] h-[1000px] w-[1000px] rounded-full 
+  bg-[radial-gradient(circle_400px_at_50%_300px,rgba(255,255,255,0.1),rgba(0,0,0,0))] 
+  filter blur-2xl pointer-events-none"
+        ></div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 relative">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-300 mb-4">
               Skills & Technologies
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Technologies and tools I use to bring ideas to life
-            </p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="space-y-8">
             {Object.entries(skills).map(([category, skillList], index) => (
-              <Card key={index} className="p-6">
-                <h3 className="text-lg font-bold text-gray-900 mb-4">
+              <div key={index} className="text-center">
+                <h3 className="text-lg font-bold text-gray-200 mb-6">
                   {category}
                 </h3>
-                <div className="space-y-2">
+                <div className="flex flex-wrap justify-center gap-4">
                   {skillList.map((skill, skillIndex) => (
-                    <div key={skillIndex} className="flex items-center">
-                      <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
-                      <span className="text-gray-700">{skill}</span>
+                    <div
+                      className="flex flex-col items-center w-20"
+                      key={skillIndex}
+                    >
+                      <Card
+                        className="p-3 bg-black border-2 border-gray-200
+                        hover:shadow-2xl hover:shadow-white/20 
+                        hover:scale-105 hover:border-blue-900 hover:border-2
+                        transition-all duration-300 ease-out
+                        flex items-center justify-center group"
+                      >
+                        <div
+                          className="transition-all duration-300 group-hover:scale-110 
+                          [&>svg]:transition-all [&>svg]:duration-300 
+                          group-hover:[&>svg]:drop-shadow-[0_0_12px_rgba(255,255,255,1)]
+                          group-hover:[&>svg]:filter"
+                        >
+                          {skill.logo}
+                        </div>
+                      </Card>
+                      <h3 className="mt-3 text-sm font-medium text-gray-500 text-center">
+                        {skill.name}
+                      </h3>
                     </div>
                   ))}
                 </div>
-              </Card>
+              </div>
             ))}
           </div>
         </div>
@@ -284,34 +318,36 @@ export default function Main_Page() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">Let's Work Together</h2>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            I'm always interested in new opportunities and exciting projects.
-            Let's discuss how we can bring your ideas to life.
+            I'm always open for freelance project, remote or other opportunites.
           </p>
-          <div className="border-t border-gray-800 pt-8">
-            <p className="text-gray-400">
-              Contact Information.
-            </p>
+          <div className="border-t border-gray-800 pt-8 mb-2">
+            <p className="text-gray-400">Contact Information.</p>
           </div>
-          <div className="flex justify-center space-x-4">
-              <a
-                href="https://github.com/Zkavolo  "
+          <div className="flex justify-center space-x-4 mb-2">
+            <a
+              href="https://github.com/Zkavolo  "
+              className="text-gray-400 hover:text-gray-600 transition-colors"
+            >
+              <Github className="h-6 w-6" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/axel-barlian-1b99b0240/"
+              className="text-gray-400 hover:text-gray-600 transition-colors"
+            >
+              <Linkedin className="h-6 w-6" />
+            </a>
+            <a
+                href=""
                 className="text-gray-400 hover:text-gray-600 transition-colors"
               >
-                <Github className="h-6 w-6" />
+                <Phone className="h-6 w-6" />
               </a>
-              <a
-                href="https://www.linkedin.com/in/axel-barlian-1b99b0240/"
-                className="text-gray-400 hover:text-gray-600 transition-colors"
-              >
-                <Linkedin className="h-6 w-6" />
-              </a>
-              {/* <a
-                href="#"
-                className="text-gray-400 hover:text-gray-600 transition-colors"
-              >
-                <Twitter className="h-6 w-6" />
-              </a> */}
-            </div>
+          </div>
+          <p className="text-xs text-gray-300 mb-8 max-w-2xl mx-auto">
+            Design and developed by Axel Barlian.{" "}
+            <CopyrightIcon className="inline align-middle w-3 h-3 mx-1" /> 2025
+            All rights reserved.
+          </p>
         </div>
       </footer>
     </div>
