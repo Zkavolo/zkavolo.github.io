@@ -1,43 +1,241 @@
-const projects = [
-    {
-      title: "E-Commerce Platform",
-      description:
-        "Full-stack e-commerce solution with payment integration, inventory management, and admin dashboard. Built for a client with 10k+ products.",
-      image: "/placeholder.svg?height=300&width=500",
-      technologies: ["Next.js", "Stripe", "PostgreSQL", "Tailwind CSS"],
-      liveUrl: "#",
-      githubUrl: "#",
-      featured: true,
-    },
-    {
-      title: "Task Management App",
-      description:
-        "Collaborative project management tool with real-time updates, team collaboration features, and advanced filtering options.",
-      image: "/placeholder.svg?height=300&width=500",
-      technologies: ["React", "Socket.io", "Node.js", "MongoDB"],
-      liveUrl: "#",
-      githubUrl: "#",
-      featured: true,
-    },
-    {
-      title: "Weather Dashboard",
-      description:
-        "Beautiful weather application with location-based forecasts, interactive maps, and detailed weather analytics.",
-      image: "/placeholder.svg?height=300&width=500",
-      technologies: ["Vue.js", "Weather API", "Chart.js", "CSS3"],
-      liveUrl: "#",
-      githubUrl: "#",
-      featured: false,
-    },
-    {
-      title: "Portfolio Website",
-      description: "Responsive portfolio website with smooth animations, dark mode support, and optimized performance.",
-      image: "/placeholder.svg?height=300&width=500",
-      technologies: ["Next.js", "Framer Motion", "MDX", "Vercel"],
-      liveUrl: "#",
-      githubUrl: "#",
-      featured: false,
-    },
-  ]
+import ProfilePic from "../pictures/ProfilePic.jpeg";
+import HelmifyMobile from "../pictures/Helmify_mobile.jpeg";
+import HelmifyBackEnd from "../pictures/Helmify_backend.jpeg";
+import HelmifyStructure from "../pictures/Helmify_structure.jpeg";
+import VttpDB from "../pictures/vttp_db.jpeg";
+import VttpHighlight from "../pictures/vttp_highlight.jpeg";
+import VttpLandingPage from "../pictures/vttp_landingpage.jpeg";
+import ClassicoLandingPage from "../pictures/Classico.jpeg";
+import ClassicoFrontEnd from "../pictures/Classico_frontend.jpeg";
+import ClassicoBackEnd from "../pictures/Classico_backend.jpeg";
+import IchibanKujiLogin from "../pictures/IchibanKuji_Login.jpeg";
+import IchibanKujiGallery from "../pictures/IchibanKuji_gallery.jpeg";
+import IchibanKujiBanners from "../pictures/IchibanKuji_banners.jpeg";
+import TuringHealthAPI from "../pictures/turinghealth_API.jpeg"
+import TuringHealthOverview from "../pictures/turinghealth_Overview.jpeg"
+import TuringHealthTransaction from "../pictures/turinghealth_transaction.jpeg"
 
-  export default projects;
+const projects = [
+  {
+    default: {
+      title: "VTTP (Validated Tech Talent Pool)",
+      description:
+        "This application serves as a platform to introduce OutSource company talent profiles to IT companies seeking high-quality candidates. It enables clients to evaluate and select talents that best match their requirements.",
+      technologies: [
+        "React Js",
+        "TypeScript",
+        "WebSocket",
+        "Tailwind",
+        "Springboot",
+        "PostgreSQL",
+        "Swagger",
+        "Docker",
+        "RailWay",
+      ],
+      liveUrl: "https://techtalentmarket.com/",
+      githubUrl: "https://github.com/syahiidkamil/WEB-turingcamp-vttp",
+    },
+    sections: [
+      {
+        title: "Features Highlight",
+        description:
+          "A lot of features that is targeted to every role. Most notable features are the hiring process, assestment, live chat with admins, the ability for staffs or trainers to endorse talents and the ability to see detailed talent profiles.",
+        technologies: ["React Js", "TypeScript", "WebSocket", "Tailwind"],
+        liveUrl: "",
+        githubUrl: "",
+        image: VttpHighlight,
+      },
+      {
+        title: "Initial Landing Page",
+        description:
+          "The App has a modern React landing page. Users that can log in is separated by 4 roles which is admin, talent, staff and client to focus the feature according to their needs.",
+        technologies: [
+          "React Js",
+          "TypeScript",
+          "WebSocket",
+          "Tailwind",
+          "Docker",
+          "RailWay",
+          "Nginx",
+        ],
+        liveUrl: "",
+        githubUrl: "",
+        image: VttpLandingPage,
+      },
+      {
+        title: "Structured Database",
+        description:
+          "The system utilizes a database consisting of more than 30 normalized tables designed to ensure data integrity, minimal redundancy, and optimized performance during data transfer.",
+        technologies: ["PostgreSql"],
+        liveUrl: "",
+        githubUrl: "",
+        image: VttpDB,
+      },
+    ],
+  },
+  {
+    default: {
+      title: "Helmify (Prototype)",
+      description:
+        "IoT based Project that is developed and designed for efficient helment cleaning services. Users can access the machines via helmify mobile application, by just simply scanning the machine user can already use the machine cleaning service with a touch of a button.",
+      technologies: [
+        "React Js",
+        "React Native",
+        "JavaScript",
+        "Springboot",
+        "PostgreSQL",
+        "Arduino",
+        "Nginx",
+        "Swagger",
+        "Docker",
+        "Redis",
+      ],
+      liveUrl: "",
+      githubUrl: "",
+    },
+    sections: [
+      {
+        title: "Machine Structure",
+        description:
+          "Machine is equipped with an LCD to give the state of the machine, a buzzer to notify user of it's cleaning progress, water pumps to clean the helm, servo to control the sprayer, blower to dry the helm and all of this is powered and controlled by an ESP8266.",
+        technologies: ["Arduino", "nginx"],
+        image: HelmifyStructure,
+      },
+      {
+        title: "Mobile Application",
+        description:
+          "The mobile application has several functions available, which is scanning the machine via QR code to use and choose it's services and locate vending machine via map.",
+        technologies: ["React Native", "JavaScript", "Docker"],
+        image: HelmifyMobile,
+      },
+      {
+        title: "Backend Structure",
+        description:
+          "The Backend structure uses Swagger for documentation. It has 4 states of transactions that controls triggres the machine if it is succesful and doesn't toggle if the transactions failed or cancelled",
+        technologies: ["Springboot", "Swagger", "Docker", "Redis"],
+        image: HelmifyBackEnd,
+      },
+    ],
+  },
+  {
+    default: {
+      title: "Ichiban Kuji (Prototype)",
+      description:
+        "Ichiban Kuji was a mobile-based application that uses Kotlin as it's main framework. Users can collect action figures of their favorite anime characters. The app has coin features that can be used to partipate in a gacha roll to obtain random figures. The animation is made using LottieFiles via json file and users can experience the scratch card feature to reveal the rarity of the figure.",
+      technologies: ["Kotlin", "Supabase", "Lottiefiles", "O-Auth"],
+      liveUrl: "",
+      githubUrl: "",
+    },
+    sections: [
+      {
+        title: "Banners Page",
+        description:
+          "Users can select up to 3 banners to pull with their own unique characters",
+        technologies: ["Kotlin", "Lottiefiles"],
+        liveUrl: "",
+        githubUrl: "",
+        image: IchibanKujiBanners,
+      },
+      {
+        title: "Login Screen",
+        description:
+          "There are 2 ways to login which is using normal login procedure and using Google account via O-Auth",
+        technologies: ["Kotlin", "O-Auth"],
+        liveUrl: "",
+        githubUrl: "",
+        image: IchibanKujiLogin,
+      },
+      {
+        title: "Gallery Page",
+        description:
+          "Users can also view the rarity and variety of figures they can get on each banner.",
+        technologies: ["Kotlin", "Lottiefiles"],
+        liveUrl: "",
+        githubUrl: "",
+        image: IchibanKujiGallery,
+      },
+    ],
+  },
+  {
+    default: {
+      title: "Classico",
+      description:
+        "Web Based Project that is used for students to sign up and use Classico services. Users can sign up to 3 different training services with their own benefits and price. They can also managed their availability by using the website to change training dates and time.",
+      technologies: ["Codeigniter 3", "Bootstrap", "CSS", "PHP", "MySQL"],
+      liveUrl: "",
+      githubUrl: "https://github.com/cvdigitalcreative/KP_Web_Classico",
+    },
+    sections: [
+      {
+        title: "Frontend Structure",
+        description:
+          "This app frontend uses pure css for it's style and animation as well as using the bootstrap library",
+        technologies: ["Bootstrap", "CSS", "PHP", "JQuery"],
+        image: ClassicoFrontEnd,
+      },
+      {
+        title: "Initial Landing Page",
+        description:
+          "This landing page is used to tell users about the classico program and other user testimonies.",
+        technologies: ["Bootstrap", "CSS", "JQuery"],
+        image: ClassicoLandingPage,
+      },
+      {
+        title: "Backend Structure",
+        description:
+          "The Backend structure uses Codeigniter libraries to handle certain services. It uses MySQL as it's database and all managed using phpmyadmin",
+        technologies: ["PHP", "MySQL"],
+        image: ClassicoBackEnd,
+      },
+    ],
+  },
+  {
+    default: {
+      title: "Turing Health (Backend)",
+      description:
+        "Turing Health is a Springboot based aplication. User can use it to keep up with their personal health problems. This app is equipped with REST API that can be use to do transactions, upload images of profile and search out medical supplements",
+      technologies: [
+        "Springboot",
+        "API Platform",
+        "PostgreSQL",
+        "PostMan",
+        "Swagger"
+      ],
+      liveUrl: "",
+      githubUrl: "https://github.com/AlanPratama/turing-health-spring-boot",
+    },
+    sections: [
+      {
+        title: "Backend Config",
+        description:
+          "A lot of features that is targeted to every role. Most notable features are the hiring process, assestment, live chat with admins, the ability for staffs or trainers to endorse talents and the ability to see detailed talent profiles.",
+        technologies: ["Springboot", "API Platform"],
+        liveUrl: "",
+        githubUrl: "",
+        image: TuringHealthAPI,
+      },
+      {
+        title: "Main Features",
+        description:
+          "Users can buy medical products for treatments, consult with available doctore via application, checks nearest hospitals and update their profiles.",
+        technologies: [
+          "Springboot",
+        ],
+        liveUrl: "",
+        githubUrl: "",
+        image: TuringHealthOverview,
+      },
+      {
+        title: "Transactional Process",
+        description:
+          "Transactional process are divided into 5 states to ensure user confidentiality, trust and service. It is mandatory that the user follow these steps to ensure a smooth transaction process",
+        technologies: ["Springboot", "API Platform", "PostgreSQL", "PostMan"],
+        liveUrl: "",
+        githubUrl: "",
+        image: TuringHealthTransaction,
+      },
+    ],
+  },
+];
+
+export default projects;

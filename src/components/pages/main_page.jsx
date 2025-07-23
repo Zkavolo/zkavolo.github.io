@@ -11,13 +11,28 @@ import {
   Twitter,
   CopyrightIcon,
   Phone,
+  Layers,
 } from "lucide-react";
 import experiences from "../data/experince";
 import skills from "../data/skills";
 import projects from "../data/projects";
 import ProfilePic from "../pictures/ProfilePic.jpeg";
+import { useState } from "react";
 
 export default function Main_Page() {
+  const [hoveredSections, setHoveredSections] = useState({});
+
+  const handleImageHover = (projectIndex, sectionIndex) => {
+    setHoveredSections((prev) => ({ ...prev, [projectIndex]: sectionIndex }));
+  };
+
+  const handleImageLeave = (projectIndex) => {
+    setHoveredSections((prev) => {
+      const newState = { ...prev };
+      delete newState[projectIndex];
+      return newState;
+    });
+  };
   return (
     <div className="min-h-screen bg-white">
       {/* Intro Section */}
@@ -97,15 +112,15 @@ export default function Main_Page() {
                     <div className="text-sm text-gray-300 font-semibold mb-1">
                       {exp.period}
                     </div>
-                    <div class="gallery">
+                    <div className="gallery">
                       <img
                         src={exp.exp_pic}
-                        alt="ProfPic"
+                        alt="Default"
                         className="w-full h-full object-cover object-center"
                       />
                       <img
                         src={exp.company_pic}
-                        alt="ProfPic"
+                        alt="Default"
                         className="w-full h-full object-cover object-center"
                       />
                     </div>
@@ -167,18 +182,13 @@ export default function Main_Page() {
                       key={skillIndex}
                     >
                       <Card
-                        className="p-3 bg-black border-2 border-gray-200
+                        className="p-3 bg-gray-200 border-2 border-blue-900
                         hover:shadow-2xl hover:shadow-white/20 
                         hover:scale-105 hover:border-blue-900 hover:border-2
                         transition-all duration-300 ease-out
                         flex items-center justify-center group"
                       >
-                        <div
-                          className="transition-all duration-300 group-hover:scale-110 
-                          [&>svg]:transition-all [&>svg]:duration-300 
-                          group-hover:[&>svg]:drop-shadow-[0_0_12px_rgba(255,255,255,1)]
-                          group-hover:[&>svg]:filter"
-                        >
+                        <div className="transition-all duration-300 group-hover:scale-110">
                           {skill.logo}
                         </div>
                       </Card>
@@ -195,153 +205,168 @@ export default function Main_Page() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section
+        id="projects"
+        className="relative py-20 bg-black overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none"></div>
+        <div
+          className="absolute left-0 right-0 top-[-10%] h-[1000px] w-[1000px] rounded-full 
+  bg-[radial-gradient(circle_400px_at_50%_300px,rgba(255,255,255,0.1),rgba(0,0,0,0))] 
+  filter blur-2xl pointer-events-none"
+        ></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 relative">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Featured Projects
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-200 mb-4">
+              Projects That I Have Worked On
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              A selection of projects that showcase my skills and passion for
-              creating great user experiences
-            </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-            {projects
-              .filter((p) => p.featured)
-              .map((project, index) => (
+            {projects.map((project, projectIndex) => {
+              const isHovered = hoveredSections[projectIndex] !== undefined;
+              const currentSection = hoveredSections[projectIndex];
+              const activeContent = isHovered
+                ? project.sections[currentSection]
+                : project.default;
+              const isOddProjects = projects.length % 2 !== 0;
+
+              return (
                 <Card
-                  key={index}
-                  className="overflow-hidden hover:shadow-xl transition-shadow group"
+                  key={projectIndex}
+                  className={`bg-gradient-to-br from-gray-900 via-gray-800 to-black
+                     hover:shadow-2xl hover:shadow-white/20 
+                     hover:scale-105 hover:border-white hover:border-2
+                     transition-all duration-300 ease-out
+                     border border-gray-700 overflow-hidden group
+                     ${
+                       isOddProjects && projectIndex === projects.length - 1
+                         ? "lg:col-span-2 lg:w-1/2 lg:mx-auto"
+                         : ""
+                     }`}
                 >
-                  <div className="aspect-video relative overflow-hidden">
-                    <img
-                      src={project.image || "/placeholder.svg"}
-                      alt={project.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
+                  <div
+                    className="split-hover-image"
+                    onMouseLeave={() => handleImageLeave(projectIndex)}
+                  >
+                    {project.sections.map((section, sectionIndex) => (
+                      <img
+                        key={sectionIndex}
+                        src={section.image}
+                        alt={`${section.title}`}
+                        className="w-full h-full object-cover object-center"
+                        onMouseEnter={() =>
+                          handleImageHover(projectIndex, sectionIndex)
+                        }
+                      />
+                    ))}
                   </div>
                   <CardContent className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
-                      {project.title}
-                    </h3>
-                    <p className="text-gray-600 mb-4 leading-relaxed">
-                      {project.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {project.technologies.map((tech, techIndex) => (
-                        <Badge key={techIndex} variant="outline">
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-                    <div className="flex space-x-3">
-                      <Button asChild>
-                        <a href={project.liveUrl}>
-                          <ExternalLink className="h-4 w-4 mr-2" />
-                          Live Demo
-                        </a>
-                      </Button>
-                      <Button variant="outline" asChild>
-                        <a href={project.githubUrl}>
-                          <Github className="h-4 w-4 mr-2" />
-                          Code
-                        </a>
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {projects
-              .filter((p) => !p.featured)
-              .map((project, index) => (
-                <Card
-                  key={index}
-                  className="overflow-hidden hover:shadow-lg transition-shadow"
-                >
-                  <div className="aspect-video relative">
-                    <img
-                      src={project.image || "/placeholder.svg"}
-                      alt={project.title}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <CardContent className="p-4">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                      {project.title}
-                    </h3>
-                    <p className="text-gray-600 text-sm mb-3">
-                      {project.description}
-                    </p>
-                    <div className="flex flex-wrap gap-1 mb-3">
-                      {project.technologies
-                        .slice(0, 3)
-                        .map((tech, techIndex) => (
+                    <div className="transition-all duration-300 ease-in-out">
+                      <div className="flex items-center gap-2 mb-2">
+                        <h3 className="text-xl font-bold text-gray-200">
+                          {activeContent.title}
+                        </h3>
+                        {!isHovered && (
+                          <Layers className="h-5 w-5 text-gray-200" />
+                        )}
+                      </div>
+                      <p className="text-gray-100 mb-4 leading-relaxed min-h-[4.5rem]">
+                        {activeContent.description}
+                      </p>
+                      <div className="flex flex-wrap gap-2 mb-6 min-h-[2.5rem]">
+                        {activeContent.technologies.map((tech, techIndex) => (
                           <Badge
-                            key={techIndex}
-                            variant="secondary"
-                            className="text-xs"
+                            key={`${
+                              isHovered ? currentSection : "default"
+                            }-${techIndex}`}
+                            variant={isHovered ? "secondary" : "default"}
                           >
                             {tech}
                           </Badge>
                         ))}
+                      </div>
+                      {!isHovered && (
+                        <div className="flex space-x-3">
+                          {activeContent.liveUrl ? (
+                            <Button
+                              asChild
+                              variant="secondary"
+                              className="hover:bg-black hover:text-white hover:shadow-amber-50 transition-all ease-in-out duration-300"
+                            >
+                              <a href={activeContent.liveUrl}>
+                                <ExternalLink className="h-4 w-4 mr-2" />
+                                View Project
+                              </a>
+                            </Button>
+                          ) : (
+                            <Button variant="secondary" disabled>
+                              <ExternalLink className="h-4 w-4 mr-2" />
+                              Unavailable
+                            </Button>
+                          )}
+
+                          {activeContent.githubUrl ? (
+                            <Button
+                              asChild
+                              variant="outline"
+                              className="hover:bg-black hover:text-white hover:shadow-amber-50 transition-all ease-in-out duration-300"
+                            >
+                              <a href={activeContent.githubUrl}>
+                                <Github className="h-4 w-4 mr-2" />
+                                Code
+                              </a>
+                            </Button>
+                          ) : (
+                            <Button variant="outline" disabled>
+                              <Github className="h-4 w-4 mr-2" />
+                              Unavailable
+                            </Button>
+                          )}
+                        </div>
+                      )}
                     </div>
-                    <div className="flex space-x-2">
-                      <Button size="sm" asChild>
-                        <a href={project.liveUrl}>
-                          <ExternalLink className="h-3 w-3 mr-1" />
-                          Demo
-                        </a>
-                      </Button>
-                      <Button size="sm" variant="outline" asChild>
-                        <a href={project.githubUrl}>
-                          <Github className="h-3 w-3 mr-1" />
-                          Code
-                        </a>
-                      </Button>
-                    </div>
+
+                    {!isHovered && (
+                      <p className="pt-4 text-center text-sm text-gray-400 mt-2 transition-opacity duration-300">
+                        Hover over the image to know the journey
+                      </p>
+                    )}
                   </CardContent>
                 </Card>
-              ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* Footer/Contact */}
-      <footer className="py-20 bg-gray-900 text-white">
+      <footer className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">Let's Work Together</h2>
+          <h2 className="text-3xl font-bold mb-4 text-gray-100">Let's Work Together</h2>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
             I'm always open for freelance project, remote or other opportunites.
           </p>
           <div className="border-t border-gray-800 pt-8 mb-2">
             <p className="text-gray-400">Contact Information.</p>
+            <p className="text-xs text-gray-300 max-w-2xl mx-auto">
+              <Phone className="inline align-middle w-3 h-3 mx-1" /> +62
+              822-7801-4722
+            </p>
           </div>
           <div className="flex justify-center space-x-4 mb-2">
             <a
               href="https://github.com/Zkavolo  "
-              className="text-gray-400 hover:text-gray-600 transition-colors"
+              className="text-gray-600 hover:text-gray-300 transition-colors"
             >
               <Github className="h-6 w-6" />
             </a>
             <a
               href="https://www.linkedin.com/in/axel-barlian-1b99b0240/"
-              className="text-gray-400 hover:text-gray-600 transition-colors"
+              className="text-gray-600 hover:text-gray-300 transition-colors"
             >
               <Linkedin className="h-6 w-6" />
             </a>
-            <a
-                href=""
-                className="text-gray-400 hover:text-gray-600 transition-colors"
-              >
-                <Phone className="h-6 w-6" />
-              </a>
           </div>
           <p className="text-xs text-gray-300 mb-8 max-w-2xl mx-auto">
             Design and developed by Axel Barlian.{" "}

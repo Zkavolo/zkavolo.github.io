@@ -252,3 +252,84 @@
 .gallery:hover > img:first-child:hover + img{
   --_p: calc(-50% - var(--g));
 }
+
+/* triple image rectangle */
+.split-hover-image {
+  --g: 2px;
+  display: grid;
+  clip-path: inset(1px);
+  max-width: 600px;
+  width: 100%;
+}
+
+.split-hover-image > img {
+  --_p: 0px;
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  transform: scale(1);
+}
+
+/* First image - Left third */
+.split-hover-image > img:nth-child(1) {
+  clip-path: polygon(0 0, calc(30% + var(--_p)) 0, calc(30% - var(--g) + var(--_p)) 100%, 0 100%);
+}
+
+/* Second image - Middle third */
+.split-hover-image > img:nth-child(2) {
+  clip-path: polygon(
+    calc(30% + var(--g) + var(--_p)) 0,
+    calc(70% - var(--_p)) 0,
+    calc(70% + var(--g) - var(--_p)) 100%,
+    calc(30% - var(--g) + var(--_p)) 100%
+  );
+}
+
+/* Third image - Right third */
+.split-hover-image > img:nth-child(3) {
+  clip-path: polygon(calc(70% + var(--g) - var(--_p)) 0, 100% 0, 100% 100%, calc(70% + var(--g) - var(--_p)) 100%);
+}
+
+/* Hover Effects */
+.split-hover-image:hover > img:nth-child(1):hover {
+  --_p: 60%;
+  transform: scale(1.05) translateZ(10px);
+  z-index: 10;
+  filter: brightness(1.1);
+}
+
+.split-hover-image:hover > img:nth-child(2):hover {
+  --_p: -20%;
+  transform: scale(1.05) translateZ(10px);
+  z-index: 10;
+  filter: brightness(1.1);
+}
+
+.split-hover-image:hover > img:nth-child(3):hover {
+  --_p: 60%;
+  transform: scale(1.05) translateZ(10px);
+  z-index: 10;
+  filter: brightness(1.1);
+}
+
+/* Non-hovered images become smaller */
+.split-hover-image:hover > img:nth-child(1):not(:hover) {
+  --_p: -10%;
+  transform: scale(0.95);
+  filter: brightness(0.7);
+}
+
+.split-hover-image:hover > img:nth-child(2):not(:hover) {
+  --_p: 25%;
+  transform: scale(0.95);
+  filter: brightness(0.7);
+}
+
+.split-hover-image:hover > img:nth-child(3):not(:hover) {
+  --_p: -10%;
+  transform: scale(0.95);
+  filter: brightness(0.7);
+}

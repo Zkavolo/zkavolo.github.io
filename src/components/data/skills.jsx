@@ -3,6 +3,7 @@ import {
   BootstrapOriginal,
   CodeigniterPlain,
   CsharpOriginal,
+  CsharpPlain,
   Css3Original,
   DockerOriginal,
   FigmaOriginal,
@@ -12,6 +13,8 @@ import {
   GoOriginal,
   Html5Original,
   JavaOriginal,
+  JavaPlain,
+  JavaPlainWordmark,
   JavascriptOriginal,
   LaravelOriginal,
   LinuxOriginal,
@@ -25,7 +28,9 @@ import {
   TailwindcssOriginal,
   TypescriptOriginal,
   UnityOriginal,
+  VercelLine,
   VercelOriginal,
+  VercelOriginalWordmark,
 } from "devicons-react";
 import { Cctv } from "lucide-react";
 
