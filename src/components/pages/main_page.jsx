@@ -1,21 +1,8 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import {
-  ExternalLink,
-  Github,
-  Linkedin,
-  CopyrightIcon,
-  Phone,
-  Layers,
-} from "lucide-react";
-import skills from "../data/skills";
-import projects from "../data/projects";
-import { useState } from "react";
 import Intro from "@/components/react_components/Intro.jsx";
 import Work_Exp from "../react_components/Work_Exp";
 import Skill from "../react_components/Skill";
 import Project from "../react_components/Project";
+import Footer from "../react_components/Footer";
 
 export default function Main_Page() {
   return (
@@ -29,6 +16,7 @@ export default function Main_Page() {
       {/* Projects Section */}
       <Project/>
       {/* Footer/Contact */}
+      <Footer/>
     </div>
   );
 }

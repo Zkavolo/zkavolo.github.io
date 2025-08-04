@@ -1,3 +1,10 @@
+import {
+  Github,
+  Linkedin,
+  CopyrightIcon,
+  Phone,
+} from "lucide-react";
+
 export default function Footer() {
   return (
     <footer className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-black">
