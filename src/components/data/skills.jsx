@@ -25,12 +25,15 @@ import {
   PostgresqlOriginal,
   ReactOriginal,
   SpringOriginal,
+  SupabaseOriginal,
   TailwindcssOriginal,
   TypescriptOriginal,
   UnityOriginal,
   VercelLine,
   VercelOriginal,
   VercelOriginalWordmark,
+  VuejsLine,
+  VuejsOriginal,
 } from "devicons-react";
 import { Cctv } from "lucide-react";
 
@@ -56,6 +59,7 @@ const skills = {
     createSkill(TailwindcssOriginal, "Tailwind"),
     createSkill(BootstrapOriginal, "BootStrap"),
     createSkill(Css3Original, "CSS"),
+    createSkill(VuejsOriginal, "Vue JS"),
   ],
   Backend: [
     createSkill(NestjsOriginal, "Nest JS"),
@@ -75,6 +79,7 @@ const skills = {
     createSkill(AmazonwebservicesOriginalWordmark, "AWS"),
     createSkill(NodejsOriginal, "Node.js"),
     createSkill(VercelOriginal, "Vercel"),
+    createSkill(SupabaseOriginal, "Supabase"),
     createSkill(FigmaOriginal, "Figma"),
     createSkill(Cctv, "CCTV Networking"),
   ],

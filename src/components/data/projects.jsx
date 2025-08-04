@@ -1,4 +1,3 @@
-import ProfilePic from "../pictures/ProfilePic.jpeg";
 import HelmifyMobile from "../pictures/Helmify_mobile.jpeg";
 import HelmifyBackEnd from "../pictures/Helmify_backend.jpeg";
 import HelmifyStructure from "../pictures/Helmify_structure.jpeg";
@@ -11,14 +10,52 @@ import ClassicoBackEnd from "../pictures/Classico_backend.jpeg";
 import IchibanKujiLogin from "../pictures/IchibanKuji_Login.jpeg";
 import IchibanKujiGallery from "../pictures/IchibanKuji_gallery.jpeg";
 import IchibanKujiBanners from "../pictures/IchibanKuji_banners.jpeg";
-import TuringHealthAPI from "../pictures/turinghealth_API.jpeg"
-import TuringHealthOverview from "../pictures/turinghealth_Overview.jpeg"
-import TuringHealthTransaction from "../pictures/turinghealth_transaction.jpeg"
+import TuringHealthAPI from "../pictures/turinghealth_API.jpeg";
+import TuringHealthOverview from "../pictures/turinghealth_Overview.jpeg";
+import TuringHealthTransaction from "../pictures/turinghealth_transaction.jpeg";
+import ExchangeAPIFront from "../pictures/Exchange_api_front.jpeg";
+import ExchangeAPIDB from "../pictures/Supabase.jpeg";
+import ExchangeAPIBack from "../pictures/Exchange_api_back.jpeg";
 
 const projects = [
   {
     default: {
-      title: "VTTP (Validated Tech Talent Pool)",
+      title: "Simple Currecy Converter (2025)",
+      description:
+        "A simple currency converter that can convert between different currencies using the latest exchange rates.",
+      technologies: [
+        "Vue Js", "Tailwind", "TypeScript", "HTML", "CSS", "Supabase", "PostgreSQL", "Springboot", "Vercel", "Exchange API", "Docker",
+      ],
+      liveUrl: "https://v0-simple-currency-converter.vercel.app/",
+      githubUrl: "https://github.com/Zkavolo/exchange-api-frontend",
+    },
+    sections: [
+      {
+        title: "Exchange API",
+        description:
+          "This API is used to get the latest exchange rates from various currencies. It is built using Springboot and uses PostgreSQL as its database. You can also find the source code on this link https://github.com/Zkavolo/exchange-api-backend.",
+        technologies: ["Springboot", "PostgreSQL", "Docker", "API"],
+        image: ExchangeAPIBack,
+      },
+      {
+        title: "Frontend Structure",
+        description:
+          "The frontend is built using Vue Js and Tailwind CSS. It is a simple and responsive design that allows users to easily convert between different currencies.",
+        technologies: ["Vue Js", "Tailwind", "TypeScript", "HTML", "CSS"],
+        image: ExchangeAPIFront,
+      },
+      {
+        title: "Database Structure",
+        description:
+          "The database is built using PostgreSQL and is hosted on Supabase. It contains the latest exchange rates for various currencies.",
+        technologies: ["PostgreSQL", "Supabase"],
+        image: ExchangeAPIDB,
+      },
+    ],
+  },
+  {
+    default: {
+      title: "VTTP (Validated Tech Talent Pool) (2024)",
       description:
         "This application serves as a platform to introduce OutSource company talent profiles to IT companies seeking high-quality candidates. It enables clients to evaluate and select talents that best match their requirements.",
       technologies: [
@@ -75,7 +112,7 @@ const projects = [
   },
   {
     default: {
-      title: "Helmify (Prototype)",
+      title: "Helmify (Prototype) (2024)",
       description:
         "IoT based Project that is developed and designed for efficient helment cleaning services. Users can access the machines via helmify mobile application, by just simply scanning the machine user can already use the machine cleaning service with a touch of a button.",
       technologies: [
@@ -119,7 +156,7 @@ const projects = [
   },
   {
     default: {
-      title: "Ichiban Kuji (Prototype)",
+      title: "Ichiban Kuji (Prototype) (2024)",
       description:
         "Ichiban Kuji was a mobile-based application that uses Kotlin as it's main framework. Users can collect action figures of their favorite anime characters. The app has coin features that can be used to partipate in a gacha roll to obtain random figures. The animation is made using LottieFiles via json file and users can experience the scratch card feature to reveal the rarity of the figure.",
       technologies: ["Kotlin", "Supabase", "Lottiefiles", "O-Auth"],
@@ -158,7 +195,7 @@ const projects = [
   },
   {
     default: {
-      title: "Classico",
+      title: "Classico (2022)",
       description:
         "Web Based Project that is used for students to sign up and use Classico services. Users can sign up to 3 different training services with their own benefits and price. They can also managed their availability by using the website to change training dates and time.",
       technologies: ["Codeigniter 3", "Bootstrap", "CSS", "PHP", "MySQL"],
@@ -191,7 +228,7 @@ const projects = [
   },
   {
     default: {
-      title: "Turing Health (Backend)",
+      title: "Turing Health (Backend) (2024)",
       description:
         "Turing Health is a Springboot based aplication. User can use it to keep up with their personal health problems. This app is equipped with REST API that can be use to do transactions, upload images of profile and search out medical supplements",
       technologies: [
@@ -199,7 +236,7 @@ const projects = [
         "API Platform",
         "PostgreSQL",
         "PostMan",
-        "Swagger"
+        "Swagger",
       ],
       liveUrl: "",
       githubUrl: "https://github.com/AlanPratama/turing-health-spring-boot",
@@ -218,9 +255,7 @@ const projects = [
         title: "Main Features",
         description:
           "Users can buy medical products for treatments, consult with available doctore via application, checks nearest hospitals and update their profiles.",
-        technologies: [
-          "Springboot",
-        ],
+        technologies: ["Springboot"],
         liveUrl: "",
         githubUrl: "",
         image: TuringHealthOverview,
@@ -239,3 +274,39 @@ const projects = [
 ];
 
 export default projects;
+
+// {
+//     default: {
+//       title: "Enter Title Here",
+//       description:
+//         "Enter Description Here",
+//       technologies: [
+//         "Enter Technology Here",
+//       ],
+//       liveUrl: "",
+//       githubUrl: "",
+//     },
+//     sections: [
+//       {
+//         title: "Enter Section Title Here",
+//         description:
+//           "Enter Section Description Here",
+//         technologies: ["Enter Technology Here"],
+//         image: ,
+//       },
+//       {
+//         title: "Enter Section Title Here",
+//         description:
+//           "Enter Section Description Here",
+//         technologies: ["Enter Technology Here"],
+//         image: ,
+//       },
+//       {
+//         title: "Enter Section Title Here",
+//         description:
+//           "Enter Section Description Here",
+//         technologies: ["Enter Technology Here"],
+//         image: ,
+//       },
+//     ],
+//   },
